@@ -3,18 +3,37 @@ require('styles/App.css');
 
 import React from 'react';
 
-class FoodThoughts extends React.Component {
-  static defaultProps = {
-    flavour: 'cold'
+class Layer extends React.Component {
+  // Not convinced this does anything:
+  static propType = {
+    type: React.PropTypes.string
   }
-  render() {
-    const food = 'pizza';
-    //const { flavour } = this.props;
 
+  render () {
+    const { type } = this.props;
     return (
       <div>
-        <p>{`I like ${food}`}</p>
-        <p>Specifically, {flavour} pizza</p>
+        {type}<br />
+      </div>
+    );
+  }
+}
+
+class Sandwich extends React.Component {
+  /*
+  constructor () {
+    super();
+    console.log(this.props);
+    this.dimensions = this.props.dimensions;
+  }
+  */
+  render () {
+    const { dimensions, type } = this.props;
+    return (
+      <div>
+        Bread ({type}) ({dimensions.width}cm wide)<br />
+        {this.props.children}
+        Bread ({type})<br />
       </div>
     );
   }
@@ -22,11 +41,24 @@ class FoodThoughts extends React.Component {
 
 class AppComponent extends React.Component {
   render() {
-    const title = 'Wooh';
+    const title = 'Dinner';
+    const arrayOfThings = ['plate', 'table'];
     return (
       <div className="index">
         <h1>{title}</h1>
-        <FoodThoughts flavour="margarita" />
+
+        <Sandwich dimensions={ {width: 20} } type="brown">
+          <Layer type="lettuce" />
+          <Layer type="cheese" />
+          <Layer type="ham" />
+        </Sandwich>
+
+        <ul>
+          {/* key must be unique */}
+          {arrayOfThings.map((thing, i) => (
+            <li key={i}>{thing}</li>
+          ))}
+        </ul>
       </div>
     );
   }
