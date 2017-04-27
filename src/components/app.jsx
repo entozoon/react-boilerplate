@@ -21,8 +21,8 @@ class Layer extends React.Component {
 
 class Sandwich extends React.Component {
   /*
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
     console.log(this.props);
     this.dimensions = this.props.dimensions;
   }
@@ -36,6 +36,29 @@ class Sandwich extends React.Component {
         Bread ({type})<br />
       </div>
     );
+  }
+}
+
+class Waiter extends React.Component {
+  constructor (props) {
+    super(props);
+    this.state = {
+      request: 'placeholder'
+    };
+  }
+  onChangeValue(e) {
+    this.setState({
+      request: e.target.value
+    });
+  }
+  render() {
+    const { request } = this.state; // passes this.state.request to request
+    return (
+      <div>
+        <input value={request} onChange={this.onChangeValue.bind(this)} />
+        <p>{request}</p>
+      </div>
+    )
   }
 }
 
@@ -59,6 +82,8 @@ class AppComponent extends React.Component {
             <li key={i}>{thing}</li>
           ))}
         </ul>
+
+        <Waiter />
       </div>
     );
   }
