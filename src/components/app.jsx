@@ -3,6 +3,8 @@ require('styles/App.css');
 
 import React from 'react';
 
+import { Layout, Header, Button } from 'react-mdl';
+
 class Layer extends React.Component {
   // Not convinced this does anything:
   static propType = {
@@ -18,6 +20,8 @@ class Layer extends React.Component {
     );
   }
 }
+
+
 
 class Sandwich extends React.Component {
   /*
@@ -67,8 +71,8 @@ class AppComponent extends React.Component {
     const title = 'Dinner';
     const arrayOfThings = ['plate', 'table'];
     return (
-      <div className="index">
-        <h1>{title}</h1>
+      <Layout fixedHeader className="bleh">
+        <Header title={title}></Header>
 
         <Sandwich dimensions={ {width: 20} } type="brown">
           <Layer type="lettuce" />
@@ -84,7 +88,9 @@ class AppComponent extends React.Component {
         </ul>
 
         <Waiter />
-      </div>
+
+        <Button ripple>Clicky</Button>
+      </Layout>
     );
   }
 }

@@ -4,6 +4,7 @@
 npm install -g yo
 npm install -g generator-react-webpack
 yo react-webpack
+npm install --save react-mdl
 
 ## Dev
 
