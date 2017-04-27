@@ -5,6 +5,12 @@ import React from 'react';
 
 import { Layout, Header, Button } from 'react-mdl';
 
+import 'react-mdl/extra/material.css';
+import 'react-mdl/extra/material.js';
+
+// How I might go about setting up routing (# links)
+//import { HasRouter as Router, Route, Link } from 'react-router-dom';
+
 class Layer extends React.Component {
   // Not convinced this does anything:
   static propType = {
@@ -67,11 +73,21 @@ class Waiter extends React.Component {
 }
 
 class AppComponent extends React.Component {
+  // This could be like
+  /*
+  render() {
+    return (
+      <Router>
+        <div></div>
+      </Router>
+    );
+  }
+  */
   render() {
     const title = 'Dinner';
     const arrayOfThings = ['plate', 'table'];
     return (
-      <Layout fixedHeader className="bleh">
+      <Layout fixedHeader>
         <Header title={title}></Header>
 
         <Sandwich dimensions={ {width: 20} } type="brown">
