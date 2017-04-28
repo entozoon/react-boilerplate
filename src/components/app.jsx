@@ -27,8 +27,6 @@ class Layer extends React.Component {
   }
 }
 
-
-
 class Sandwich extends React.Component {
   /*
   constructor (props) {
